@@ -3,25 +3,33 @@ window.onload = function () {
   const restartButton = document.getElementById("restart-button")
   let game = null
   let player = null
-  let obstacleInterval = null
-  startButton.addEventListener("click", function () {
+
+  startButton.addEventListener("click", function (e) {
     startGame()
   })
 
+  restartButton.addEventListener("click", (e) => {
+    window.location.reload()
+  })
+
   document.addEventListener("keydown", (e) => {
-    console.log(e.key)
     if (e.key === "ArrowRight") {
-      player.directionX = 1
+      player.directionX = 2.5
     }
     if (e.key === "ArrowLeft") {
-      player.directionX = -1
+      player.directionX = -2.5
     }
     if (e.key === "ArrowUp") {
-      player.directionY = -1
+      player.directionY = -2.5
     }
     if (e.key === "ArrowDown") {
-      player.directionY = 1
+      player.directionY = 2.5
     }
+  })
+
+  document.addEventListener("keyup", () => {
+    player.directionY = 0
+    player.directionX = 0
   })
 
   function generateObstacle() {
@@ -36,6 +44,7 @@ window.onload = function () {
       obstacle,
       top: top,
       left: left,
+      velocity: 1.5,
     })
 
     obstacle.style.top = top + "px"
@@ -49,9 +58,11 @@ window.onload = function () {
   function startGame() {
     game = new Game()
     player = new Player(game.gameScreen, 223, 520, 100, 50)
+
     game.player = player
     game.start()
-    obstacleInterval = setInterval(() => {
+
+    game.obstacleInterval = setInterval(() => {
       generateObstacle()
     }, 3000)
   }
