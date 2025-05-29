@@ -50,7 +50,7 @@ window.onload = function () {
     obstacle.style.top = top + "px"
     obstacle.style.left = left + "px"
     obstacle.style.rotate = "180deg"
-    obstacle.src = "../images/redCar.png"
+    obstacle.src = "./images/redCar.png"
 
     game.gameScreen.appendChild(obstacle)
   }
