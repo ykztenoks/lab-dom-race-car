@@ -55,10 +55,10 @@ class Game {
         }
 
         if (this.lives === 2) {
-          this.player.element.src = "../images/car-wreck1.png"
+          this.player.element.src = "./images/car-wreck1.png"
         }
         if (this.lives === 1) {
-          this.player.element.src = "../images/car-wreck1 - Copia.png"
+          this.player.element.src = "./images/car-wreck1 - Copia.png"
         }
 
         if (this.lives <= 0) {
